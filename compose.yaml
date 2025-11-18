@@ -1,0 +1,17 @@
+services:
+  eureka-server:
+    build:
+      context: .
+    container_name: eureka-server
+    restart: unless-stopped
+    init: true
+    ports:
+      - "8761:8761"
+    networks:
+      - innovatube-network
+    depends_on:
+      - config-server
+
+networks:
+  innovatube-network:
+    driver: bridge
